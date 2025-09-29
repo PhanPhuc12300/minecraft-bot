@@ -188,7 +188,7 @@ schedule.schedule('0 7 * * *', () => {
 });
 
 // 22h: tắt bot và kill process để Railway dừng tính giờ
-schedule.schedule('0 21 * * *', () => {
+schedule.schedule('0 22 * * *', () => {
   console.log('Tắt bot lúc 21h tối...');
   if (bot) {
     bot.quit('Hẹn giờ tắt bot');
