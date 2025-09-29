@@ -13,7 +13,8 @@
     "log4js": "^6.9.1",
     "minecraft-data": "^3.98.0",
     "mineflayer": "^4.33.0",
-    "mineflayer-pathfinder": "^2.4.5"
+    "mineflayer-pathfinder": "^2.4.5",
+    "node-cron": "^3.0.3"
   },
   "keywords": []
 }
