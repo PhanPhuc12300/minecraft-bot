@@ -164,34 +164,24 @@ function circleWalk(bot, radius) {
   }, 1000);
 }
 
-// Express app để UptimeRobot ping
+// Express app giữ port cho Railway
 app.get('/', (req, res) => {
-  const currentUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
-  res.send(
-    'Your Bot Manager is running.<br>Web For Uptime: <a href="' +
-      currentUrl +
-      '">' +
-      currentUrl +
-      '</a>'
-  );
+  res.send('Bot Manager is running...');
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-// --------- Lên lịch chạy bot ---------
-// 7h sáng: bật bot
-schedule.schedule('0 7 * * *', () => {
-  console.log('Bắt đầu chạy bot lúc 7h sáng...');
-  createBot();
-});
-
+// --------- Lên lịch chỉ để tắt bot ---------
 // 22h: tắt bot và kill process để Railway dừng tính giờ
 schedule.schedule('0 22 * * *', () => {
-  console.log('Tắt bot lúc 21h tối...');
+  console.log('Tắt bot lúc 22h tối...');
   if (bot) {
     bot.quit('Hẹn giờ tắt bot');
   }
   process.exit(0);
 });
+
+// Khởi động bot ngay khi chạy
+createBot();
